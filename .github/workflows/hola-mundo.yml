@@ -1,41 +1,23 @@
-# This is a basic workflow to help you get started with Actions
-
-name: CI
-
-# Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
+name: Aprendiendo GitHub Actions 
+run-name: ¡Estoy Aprendiendo GitHub Actions!
+on: 
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  hola-mundo:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-
-      #2. instalar .working
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with: 
           dotnet-version: "8.0.x"
-      #3. Restaurar dependencias
       - name: Restore dependencias
-        run: dotnet restore
-      #4 Compilar
+        run: dotnet restore src/MyApp
       - name: Build
-        run: dotnet build --no-restore --configuration Release
-      #5 Ejecutar test
+        run: dotnet build src/MyApp --no-restore --configuration Release 
       - name: Test
-        run: dotnet test --no-build --configuration Release
+        run: dotnet test src/MyApp --no-build --configuration Release
