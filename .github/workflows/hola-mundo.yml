@@ -16,3 +16,5 @@ jobs:
         run: dotnet build src/MyApp --no-restore --configuration Release 
       - name: Test
         run: dotnet test src/MyApp --no-build --configuration Release
+      - name: Ejecutar aplicación
+        run: dotnet run --project src/MyApp
