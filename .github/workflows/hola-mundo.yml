@@ -1,10 +1,6 @@
 name: Aprendiendo GitHub Actions 
 run-name: ¡Estoy Aprendiendo GitHub Actions!
-on: 
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+on: [push]
   workflow_dispatch:
 jobs:
   hola-mundo:
