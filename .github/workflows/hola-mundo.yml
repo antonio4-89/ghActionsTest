@@ -1,0 +1,23 @@
+name: Aprendiendo GitHub Actions 
+run-name: ¡Estoy Aprendiendo GitHub Actions!
+on: 
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+jobs:
+  hola-mundo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with: 
+          dotnet-version: "8.0.x"
+      - name: Restore dependencias
+        run: dotnet restore src/MyApp
+      - name: Build
+        run: dotnet build src/MyApp --no-restore --configuration Release 
+      - name: Test
+        run: dotnet test src/MyApp --no-build --configuration Release
