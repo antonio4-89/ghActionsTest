@@ -1,0 +1,12 @@
+name: Variables
+run-name: Contexto de estas es VARS
+
+on:
+ workflow_dispatch:
+ 
+jobs:
+  trabajoManual:
+   runs-on: ubuntu-latest
+   steps:
+   - name: Usando variables del entorno
+     run: echo "Hola ${{ vars.APELLIDOS }}. Name - ${{ vars.NOMBRE }}"
