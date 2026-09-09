@@ -1,6 +1,17 @@
 name: Aprendiendo GitHub Actions
 run-name: ¡Estoy Aprendiendo GitHub Actions!
-on: [push]
+on: 
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+  workflow_dispatch:
+  schedule:
+    - cron: "0 22 * * *"
 jobs:
   hola-mundo:
     runs-on: ubuntu-latest
