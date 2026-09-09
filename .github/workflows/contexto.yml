@@ -1,0 +1,11 @@
+name: contexto
+run-name: Cajitas de informacion
+on: 
+  push:
+jobs:
+  check-principal:
+   if: ${{ github.ref == 'refs/heads/main' }}
+   runs-on: ubuntu-latest
+   steps:
+   - run: echo "Desplegando en la rama $GITHUB_REF en el repositorioi ${{ github.repository }}
+   
