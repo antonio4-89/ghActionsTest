@@ -10,8 +10,18 @@ on:
       - main
       - develop
   workflow_dispatch:
+    inputs: 
+      edad:
+        description: 'Edad'
+        required: true
+        type: integer
+      nombre:
+        description: 'Tu nombre'
+        required: true
+        default: 'Juan'
+        type: string
   schedule:
-    - cron: "0 22 * * *"
+    - cron: "20 10 * * *"
 jobs:
   hola-mundo:
     runs-on: ubuntu-latest
@@ -29,3 +39,16 @@ jobs:
         run: dotnet test src/MyApp --no-build --configuration Release
       - name: Ejecutar aplicación
         run: dotnet run --project src/MyApp
+  greaterThan:
+      if: ${{ inputs.edad > 18 }}
+      runs-on: ubuntu-latest
+      steps:
+        - name: Correr scritp
+          run: echo ${{ inputs.nombre }} es mayor
+  lessThan:
+      if: ${{ inputs.edad < 18 }}
+      runs-on: ubuntu-latest
+      steps:
+        - name: Mostarr nombre
+          run: echo ${{ inputs.nombre}} es menor 
+      
